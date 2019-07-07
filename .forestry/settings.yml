@@ -1,0 +1,51 @@
+---
+new_page_extension: md
+auto_deploy: false
+admin_path: 
+webhook_url: 
+sections:
+- type: jekyll-pages
+  label: Pages
+  create: all
+- type: jekyll-posts
+  label: Posts
+  create: all
+- type: directory
+  path: ".tmp/src/_colors"
+  label: Colors
+  create: all
+  match: "**/*"
+- type: directory
+  path: ".tmp/src/_components"
+  label: Components
+  create: all
+  match: "**/*"
+- type: directory
+  path: ".tmp/src/_work"
+  label: Work
+  create: all
+  match: "**/*"
+- type: directory
+  path: ".tmp/src/_faqs"
+  label: Faqs
+  create: all
+  match: "**/*"
+upload_dir: uploads
+public_path: "/uploads"
+front_matter_path: ''
+use_front_matter_path: false
+file_template: ":filename:"
+instant_preview: true
+build:
+  preview_command: bundle exec jekyll build --drafts --unpublished --future -d _site
+  publish_command: bundle exec jekyll build -d _site
+  preview_env:
+  - JEKYLL_ENV=staging
+  publish_env:
+  - JEKYLL_ENV=production
+  preview_output_directory: _site
+  output_directory: _site
+  instant_preview_command: bundle exec jekyll serve --drafts --unpublished --future
+    --port 8080 --host 0.0.0.0 -d _site
+  preview_docker_image: forestryio/ruby:2.6
+  mount_path: "/srv"
